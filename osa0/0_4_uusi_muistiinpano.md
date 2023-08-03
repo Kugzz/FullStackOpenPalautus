@@ -3,8 +3,8 @@ sequenceDiagram
     participant browser
     participant server
 
+    note left of server: serveri lisää muistiinpanon listaan, joka ylläpitää muistiinpanoja. Sivu täytyy ladata uudelleen redirectin avulla, jotta muutokset saadaan näkyviin
     browser->>server:POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    %%serveri lisää muistiinpanon listaan, joka ylläpitää muistiinpanoja. Sivu täytyy ladata uudelleen redirectin avulla, jotta muutokset saadaan näkyviin
     activate server
     server-->>browser: redirect
     deactivate server
@@ -21,14 +21,14 @@ sequenceDiagram
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate server
-    %%selain hakee javascript-tiedoston, joka sisältää koodin muistiipanojen hakemiseen serveriltä sekä niiden piirtämiseen selaimessa.
     server-->>browser: the js file
     deactivate server
 
+    note right of browser: selain hakee muistiinpanodatan serveriltä javascript-tiedoston lataamisen myötä
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    %&serveri palauttaa dataa kaikista muistiinpanoista JSON-muodossa. Serverin täytyi ladata sivu uudelleen, sillä ohjelma hakee datan ainoastaan sivun lataamisen yhteydessä
     server-->>browser: JSON data
-    deactivate server 
+    deactivate server
+    note right of browser: selain piirtää muistiinpanot sivulle datan saavuttua
 
 ```
