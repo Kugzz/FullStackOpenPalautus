@@ -27,7 +27,7 @@ sequenceDiagram
     note right of browser: selain hakee muistiinpanodatan serveriltä javascript-tiedoston lataamisen myötä
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: JSON data
+    server-->>browser: [{content: "2", date: "2023-08-03T12:32:26.860Z"},…]
     deactivate server
     note right of browser: selain piirtää muistiinpanot sivulle datan saavuttua
 
